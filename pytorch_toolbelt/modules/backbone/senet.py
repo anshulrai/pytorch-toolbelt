@@ -10,6 +10,7 @@ from typing import Dict
 
 import torch.nn as nn
 from torch.utils import model_zoo
+import torch.nn.functional as F
 
 from ..abn import ABN, ACT_RELU
 
@@ -131,7 +132,7 @@ class Bottleneck(nn.Module):
             residual = self.downsample(x)
 
         out = self.se_module(out) + residual
-        out = self.relu(out)
+        out = F.relu(out, inplace=True)
 
         return out
 
@@ -383,7 +384,7 @@ class SENet(nn.Module):
                             ))
         self.inplanes = planes * block.expansion
         for i in range(1, blocks):
-            layers.append(block(self.inplanes, planes, groups, reduction))
+            layers.append(block(self.inplanes, planes, groups, reduction, abn_block=abn_block, abn_params=abn_params))
 
         return nn.Sequential(*layers)
 

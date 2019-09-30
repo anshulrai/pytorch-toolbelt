@@ -808,7 +808,7 @@ class EfficientNetB5Encoder(EfficientNetEncoder):
 class EfficientNetB6Encoder(EfficientNetEncoder):
     def __init__(self, layers=[1, 2, 4, 6], **kwargs):
         super().__init__(
-            efficient_net_b6(num_classes=1),
+            efficient_net_b6(num_classes=1, **kwargs),
             [32, 40, 72, 144, 200, 344, 576],
             [2, 4, 8, 16, 16, 32, 32],
             layers,
