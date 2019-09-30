@@ -270,45 +270,49 @@ class SEResnetEncoder(EncoderModule):
 
 
 class SEResnet50Encoder(SEResnetEncoder):
-    def __init__(self, pretrained=True, layers=None):
-        encoder = se_resnet50(pretrained="imagenet" if pretrained else None)
+    def __init__(self, pretrained=True, layers=None, **kwargs):
+        encoder = se_resnet50(pretrained="imagenet" if pretrained else None,
+                              **kwargs)
         super().__init__(encoder, [64, 256, 512, 1024, 2048],
                          [2, 4, 8, 16, 32], layers)
 
 
 class SEResnet101Encoder(SEResnetEncoder):
-    def __init__(self, pretrained=True, layers=None):
-        encoder = se_resnet101(pretrained="imagenet" if pretrained else None)
+    def __init__(self, pretrained=True, layers=None, **kwargs):
+        encoder = se_resnet101(pretrained="imagenet" if pretrained else None,
+                               **kwargs)
         super().__init__(encoder, [64, 256, 512, 1024, 2048],
                          [2, 4, 8, 16, 32], layers)
 
 
 class SEResnet152Encoder(SEResnetEncoder):
-    def __init__(self, pretrained=True, layers=None):
-        encoder = se_resnet152(pretrained="imagenet" if pretrained else None)
+    def __init__(self, pretrained=True, layers=None, **kwargs):
+        encoder = se_resnet152(pretrained="imagenet" if pretrained else None,
+                               **kwargs)
         super().__init__(encoder, [64, 256, 512, 1024, 2048],
                          [2, 4, 8, 16, 32], layers)
 
 
 class SENet154Encoder(SEResnetEncoder):
-    def __init__(self, pretrained=True, layers=None):
-        encoder = senet154(pretrained="imagenet" if pretrained else None)
+    def __init__(self, pretrained=True, layers=None, **kwargs):
+        encoder = senet154(pretrained="imagenet" if pretrained else None,
+                           **kwargs)
         super().__init__(encoder, [64, 256, 512, 1024, 2048],
                          [2, 4, 8, 16, 32], layers)
 
 
 class SEResNeXt50Encoder(SEResnetEncoder):
-    def __init__(self, pretrained=True, layers=None):
+    def __init__(self, pretrained=True, layers=None, **kwargs):
         encoder = se_resnext50_32x4d(
-            pretrained="imagenet" if pretrained else None)
+            pretrained="imagenet" if pretrained else None, **kwargs)
         super().__init__(encoder, [64, 256, 512, 1024, 2048],
                          [2, 4, 8, 16, 32], layers)
 
 
 class SEResNeXt101Encoder(SEResnetEncoder):
-    def __init__(self, pretrained=True, layers=None):
+    def __init__(self, pretrained=True, layers=None, **kwargs):
         encoder = se_resnext101_32x4d(
-            pretrained="imagenet" if pretrained else None)
+            pretrained="imagenet" if pretrained else None, **kwargs)
         super().__init__(encoder, [64, 256, 512, 1024, 2048],
                          [2, 4, 8, 16, 32], layers)
 
